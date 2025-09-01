@@ -32,3 +32,5 @@ dbt --select path/to/your_model --empty
 
 dbt will build and execute the SQL, resulting in an empty schema in the data warehouse.
 
+#### Opting out of auto-filtering
+If there’s an upstream model that does not support `--empty` and you *don’t* want the reference to it to be filtered, you can specify `ref('upstream_model').render()` to opt-out of auto-filtering. This may result in the model containing a non-zero number of rows.
